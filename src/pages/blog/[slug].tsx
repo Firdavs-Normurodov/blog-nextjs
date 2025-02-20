@@ -1,6 +1,8 @@
 import { Avatar, Box, Divider, Typography } from "@mui/material";
 import { format } from "date-fns";
+
 import { GetServerSideProps } from "next";
+
 import Image from "next/image";
 import React from "react";
 import { Sidebar } from "@/components";
@@ -37,7 +39,7 @@ const DetailedBlogsPage = ({
                 position: "relative",
                 width: "100%",
                 height: { xs: "65vh", md: "70vh" },
-                borderRadius: "8px",
+
                 overflow: "hidden",
               }}
             >
