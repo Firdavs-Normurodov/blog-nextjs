@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import { format } from "date-fns";
 import { HeroProps } from "./hero.props";
 import { calculateEstimatedTimeToRead } from "@/helpers/time.format";
-import { motion } from "framer-motion"; // ✅ Animatsiya uchun qo‘shildi
+import { motion } from "framer-motion";
 
 const Hero = ({ blogs }: HeroProps) => {
   return (
@@ -33,7 +33,7 @@ const Hero = ({ blogs }: HeroProps) => {
                 src={item.image.url}
                 alt={item.title}
                 fill
-                style={{ objectFit: "cover", filter: "brightness(0.5)" }} // ✅ Qorong‘iroq effekt
+                style={{ objectFit: "cover", filter: "brightness(0.5)" }}
               />
               <Box
                 sx={{
@@ -44,34 +44,43 @@ const Hero = ({ blogs }: HeroProps) => {
                 }}
               />
 
-              {/* **Matnlar qismi** */}
-              <motion.div
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
+              {/* **Animatsiya qismi** */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: { xs: "90%", md: "70%" },
+                  textAlign: "center",
+                  color: "#fff",
+                }}
               >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: { xs: "90%", md: "70%" },
-                    textAlign: "center",
-                    color: "#fff",
-                  }}
+                {/* **Sarlavha animatsiyasi** */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease: "easeOut" }}
                 >
                   <Typography
                     variant="h2"
                     sx={{
                       fontSize: { xs: "28px", md: "48px" },
                       fontWeight: "bold",
-                      color: "#F38D07", // ✅ Oltin rang sarlavha
+                      color: "#F38D07",
                       textShadow: "2px 2px 10px rgba(143, 114, 63, 0.6)",
                     }}
                   >
                     {item.title}
                   </Typography>
+                </motion.div>
+
+                {/* **Izoh matni animatsiyasi** */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                >
                   <Typography
                     variant="h6"
                     sx={{
@@ -82,8 +91,14 @@ const Hero = ({ blogs }: HeroProps) => {
                   >
                     {item.excerpt}
                   </Typography>
+                </motion.div>
 
-                  {/* **Muallif va O‘qish vaqti** */}
+                {/* **Muallif va vaqt animatsiyasi** */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -113,8 +128,8 @@ const Hero = ({ blogs }: HeroProps) => {
                       </Typography>
                     </Box>
                   </Box>
-                </Box>
-              </motion.div>
+                </motion.div>
+              </Box>
             </Box>
           </Box>
         ))}
