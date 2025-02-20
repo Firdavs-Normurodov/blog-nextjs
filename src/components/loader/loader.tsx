@@ -89,7 +89,7 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
           transition={{ duration: 0.2 }}
           style={{
             height: "100%",
-            background: "linear-gradient(90deg, #F38D07, #ffcc00)",
+            background: "linear-gradient(90deg, #ea7909, #ffcc00)", // **NProgress bilan bir xil gradient**
           }}
         />
       </div>

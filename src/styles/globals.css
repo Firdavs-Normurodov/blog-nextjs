@@ -4,13 +4,17 @@
 }
 
 #nprogress .bar {
-  background: #ea7909 !important; /* Qizg'ish rang */
+  background: linear-gradient(
+    90deg,
+    #ea7909,
+    #ffcc00
+  ) !important; /* Gradient */
   height: 3px !important;
-  position: fixed !important; /* Ekranning yuqori qismida joylashishi uchun */
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100% !important;
-  z-index: 9999 !important; /* Ekran ustida eng yuqori daraja */
+  z-index: 9999 !important;
 }
 
 #nprogress .peg {
