@@ -6,16 +6,17 @@ import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../helpers/theme";
 import { CssBaseline } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
+import Loader from "@/components/loader/loader"; // ✅ Loader komponentini qo‘shdik
 
 // Emotion uchun client-side cache yaratish
 const clientSideEmotionCache = createEmotionCache();
 NProgress.configure({ showSpinner: false, speed: 400, minimum: 0.2 });
 
 export interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache; // emotionCache ixtiyoriy bo'lishi kerak
+  emotionCache?: EmotionCache;
 }
 
 function MyApp({
@@ -24,8 +25,13 @@ function MyApp({
   pageProps,
 }: MyAppProps) {
   const router = useRouter();
+  const [loading, setLoading] = useState(true); // ✅ Loader uchun state
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false); // 1.5 sekunddan keyin loaderni yo‘q qilamiz
+    }, 1500);
+
     const handleStart = () => NProgress.start();
     const handleStop = () => NProgress.done();
 
@@ -47,7 +53,7 @@ function MyApp({
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        {loading ? <Loader /> : <Component {...pageProps} />}
       </ThemeProvider>
     </CacheProvider>
   );
