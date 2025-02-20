@@ -1,8 +1,6 @@
 import { Avatar, Box, Divider, Typography } from "@mui/material";
 import { format } from "date-fns";
-
 import { GetServerSideProps } from "next";
-
 import Image from "next/image";
 import React from "react";
 import { Sidebar } from "@/components";
@@ -18,7 +16,7 @@ const DetailedBlogsPage = ({
   categories,
 }: DetailedBlogsPageProps) => {
   return (
-    <SEO metaTitle={blog.slug}>
+    <SEO metaTitle={blog.title}>
       <Layout>
         <Box
           sx={{
@@ -39,7 +37,6 @@ const DetailedBlogsPage = ({
                 position: "relative",
                 width: "100%",
                 height: { xs: "65vh", md: "70vh" },
-
                 overflow: "hidden",
               }}
             >
@@ -122,7 +119,17 @@ export const getServerSideProps: GetServerSideProps<
 > = async ({ query }) => {
   const lastestBlogs = await BlogService.getLatestBlog();
   const categories = await BlogService.getCategories();
-  const blog = await BlogService.getDetailBlogs(query.slug as string);
+  const blogData = await BlogService.getDetailBlogs(query.slug as string);
+
+  // `blogData` massiv yoki obyekt ekanligini tekshiramiz
+  const blog = Array.isArray(blogData) ? blogData[0] : blogData;
+
+  if (!blog) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       blog,
