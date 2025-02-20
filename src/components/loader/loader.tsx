@@ -25,7 +25,7 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
           }, 500);
           return 100;
         }
-        return oldProgress + 5;
+        return oldProgress + 8;
       });
     }, 100);
   }, [onComplete]);
