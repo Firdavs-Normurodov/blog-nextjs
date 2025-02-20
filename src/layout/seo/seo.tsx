@@ -18,7 +18,7 @@ const SEO = ({
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={metaKeywords} />
         <meta name="author" content={author} />
-        <link rel="shortcut icon" href={"logo.png"} type="image/x-icon" />{" "}
+        <link rel="shortcut icon" href={"/favicon.ico"} type="image/x-icon" />{" "}
         {/* Corrected to use 'icon' for favicon */}
       </Head>
       {children}
