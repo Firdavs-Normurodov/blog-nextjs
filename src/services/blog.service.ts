@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
-import { BlogsType } from "src/interfaces/blog.interface";
-import { CategoryType } from "src/interfaces/categories.interface";
+import { BlogsType } from "@/interfaces/blog.interface";
+import { CategoryType } from "@/interfaces/categories.interface";
 const graphqlAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT as string;
 export const BlogService = {
   async getAllBlogs() {
