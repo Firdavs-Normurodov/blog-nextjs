@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { SeoProps } from "@/layout/seo/seo.props";
+// import Head from "next/head";
+// import { SeoProps } from "@/layout/seo/seo.props";
 import Layout from "@/layout/layout";
 import { Content, Hero, Sidebar } from "@/components";
 import { Box } from "@mui/material";
@@ -44,8 +44,8 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async ({
   const { category } = query as { category?: string }; // Type assertion for query
 
   let blogs = await BlogService.getAllBlogs();
-  let lastestBlogs = await BlogService.getLatestBlog();
-  let categories = await BlogService.getCategories();
+  const lastestBlogs = await BlogService.getLatestBlog();
+  const categories = await BlogService.getCategories();
 
   // If a specific category slug is provided, fetch blogs for that category
   if (category) {

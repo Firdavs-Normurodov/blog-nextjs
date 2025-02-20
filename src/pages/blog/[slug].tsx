@@ -8,7 +8,7 @@ import { BlogsType } from "@/interfaces/blog.interface";
 import { CategoryType } from "@/interfaces/categories.interface";
 import Layout from "@/layout/layout";
 import SEO from "@/layout/seo/seo";
-import { BlogService } from "sr@c/services/blog.service";
+import { BlogService } from "@/services/blog.service";
 
 const DetailedBlogsPage = ({
   blog,
